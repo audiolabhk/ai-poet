@@ -1,0 +1,9 @@
+.container {
+  display: inline-block;
+  margin: auto;
+}
+
+.sub-container {
+  flex-basis: auto;
+  margin: 20%;
+}
