@@ -7,7 +7,12 @@ function ChatWithOpenAI() {
   const [temperature, setTemperature] = useState(0.7);
   const [type, setType] = useState('haiku');
 
-  const API_KEY = 'replace with your OpenAI API key';
+  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+  const handleClear = () => {
+    setInputText('');
+    setResponseText('');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,17 +21,18 @@ function ChatWithOpenAI() {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     const requestBody = {
-      model: 'gpt-4o-mini',
+      model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: `write a ${type} about ${inputText}` }],
       temperature: temperature,
-      max_tokens: 256    };
+      max_tokens: 256
+    };
 
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`,
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify(requestBody),
       });
@@ -76,8 +82,9 @@ function ChatWithOpenAI() {
           {isLoading ? 'Working on it...' : 'Write!'}
         </button>
       </form>
+      <button onClick={handleClear}>Clear</button>
       <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', backgroundColor: '#f4f4f4', color: "black", padding: '1rem' }}>
-        {responseText ? responseText : 'Waiting for input...'}
+        {responseText}
       </div>
     </div>
   );
