@@ -7,7 +7,7 @@ function ChatWithOpenAI() {
   const [temperature, setTemperature] = useState(0.7);
   const [type, setType] = useState('haiku');
 
-  const API_KEY = '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'; // replace with your OpenAI API key
+  const API_KEY = 'replace with your OpenAI API key';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
