@@ -1,6 +1,7 @@
 .container {
   display: inline-block;
   margin: auto;
+  background-color: pink;
 }
 
 .sub-container {

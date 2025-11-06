@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './components/Navbar';
 
 function Huggingpoet() {
   const [inputText, setInputText] = useState('');
@@ -8,22 +9,23 @@ function Huggingpoet() {
   const [maxTokens, setMaxTokens] = useState(128);
 
   const HF_API_TOKEN = import.meta.env.VITE_HF_API_KEY;
-  const model = 'gpt2';
+  const model = 'moonshotai/Kimi-K2-Instruct-0905';  // Using GPT-2 as it's a reliable poetry model
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setResponseText('');
 
-    const apiUrl = `https://api-inference.huggingface.co/models/${model}`;
+    // testing
+    console.log(HF_API_TOKEN)
+
+    const apiUrl = `https://router.huggingface.co/v1/${model}`;
     const requestBody = {
-      inputs: inputText,
+      inputs: `Write a poem about: ${inputText}`,
       parameters: {
         temperature: temperature,
         max_new_tokens: maxTokens,
-      },
-      options: {
-        wait_for_model: true,
+        return_full_text: false,
       },
     };
 
@@ -57,7 +59,8 @@ function Huggingpoet() {
 
   return (
     <div style={{ maxWidth: 600, margin: '0 auto', padding: '1rem' }}>
-      <h1>Hugging Face GPT-2 Model</h1>
+      <Navbar />
+      <h2>Hugging Face | {model}</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           rows={6}

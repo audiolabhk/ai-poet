@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './components/Navbar';
 
 function ChatWithOpenAI() {
   const [inputText, setInputText] = useState('');
@@ -52,6 +53,8 @@ function ChatWithOpenAI() {
 
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '1rem' }}>
+      <Navbar />
+      <h2>OpenAI</h2>
       <select onChange={(e) => setType(e.target.value)} style={{ marginBottom: '1rem', width: '100%', padding: '0.5rem', fontSize: '1rem' }}>
         <option value="haiku">Haiku</option>
         <option value="sonnet">Sonnet</option>
