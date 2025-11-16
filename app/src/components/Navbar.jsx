@@ -9,7 +9,7 @@ function Navbar() {
           <Link to="/">OpenAI</Link>
         </li>
         <li>
-          <Link to="/huggingpoet">HuggingPoet</Link>
+          <Link to="/mistral">Mistral</Link>
         </li>
       </ul>
     </nav>
