@@ -2,5 +2,8 @@
   "dependencies": {
     "openai": "^6.8.1",
     "react-router-dom": "^7.9.5"
+  },
+  "scripts": {
+    "build": "vite build"
   }
 }
