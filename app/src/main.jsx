@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/ai-poet" element={<App />} />
         <Route path="/mistral" element={<Mistral />} />
       </Routes>
     </BrowserRouter>
